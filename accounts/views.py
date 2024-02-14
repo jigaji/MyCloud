@@ -57,6 +57,8 @@ def profile(request):
             profile_form.save()
             messages.success(request, 'Profile saved successfully')
             profile = get_object_or_404(Profile, user__username=request.user)
+        else:
+            messages.error(request, 'Error updating you profile')
     else:
         user_form = UserEditForm(initial=model_to_dict(user))
         profile_form = ProfileEditForm(initial=model_to_dict(profile))

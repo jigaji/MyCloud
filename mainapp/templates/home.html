@@ -1,4 +1,9 @@
 {% extends 'base.html'%}
 {% block content %}
-    This is protected HTML file.
+    <br>
+    <a href="{% url 'mainapp:create_new_folder' %}">Create New Folder</a>
+    <br>
+    {% for folder in folders %}
+        <a href="{% url 'mainapp:open_folder' folder.pk %}">{{folder.name|linebreaks}}</a>
+    {% endfor %}
 {% endblock content %}
